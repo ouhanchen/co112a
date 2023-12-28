@@ -17,4 +17,20 @@ CHIP DMux4Way {
 
     PARTS:
     // Put your code here:
+    Xor(a = true, b = sel[0], out = Xa1);
+    Xor(a = true, b = sel[1], out = Xa2);
+    Xor(a = false, b = sel[0], out = Xb1);
+    Xor(a = true, b = sel[1], out = Xb2);
+    Xor(a = true, b = sel[0], out = Xc1);
+    Xor(a = false, b = sel[1], out = Xc2);
+    Xor(a = false, b = sel[0], out = Xd1);
+    Xor(a = false, b = sel[1], out = Xd2);
+    And(a = Xa1, b = Xa2, out = X1);
+    And(a = X1, b = in, out = a);
+    And(a = Xb1, b = Xb2, out = X2);
+    And(a = X2, b = in, out = b);
+    And(a = Xc1, b = Xc2, out = X3);
+    And(a = X3, b = in, out = c);
+    And(a = Xd1, b = Xd2, out = X4);
+    And(a = X4, b = in, out = d);
 }

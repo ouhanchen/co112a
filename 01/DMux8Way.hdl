@@ -17,4 +17,60 @@ CHIP DMux8Way {
 
     PARTS:
     // Put your code here:
+    //a
+    Xor(a = true,  b = sel[0], out = Xa1);
+    Xor(a = true,  b = sel[1], out = Xa2);
+    Xor(a = true,  b = sel[2], out = Xa3);
+    And(a = Xa1,   b = Xa2,    out = Xa4);
+    And(a = Xa4,   b = Xa3,    out = A1);
+    And(a = A1,    b = in,     out = a);
+    //b
+    Xor(a = false, b = sel[0], out = Xb1);
+    Xor(a = true,  b = sel[1], out = Xb2);
+    Xor(a = true,  b = sel[2], out = Xb3);
+    And(a = Xb1,   b = Xb2,    out = Xb4);
+    And(a = Xb4,   b = Xb3,    out = A2);
+    And(a = A2,    b = in,     out = b);
+    //c
+    Xor(a = true,  b = sel[0], out = Xc1);
+    Xor(a = false, b = sel[1], out = Xc2);
+    Xor(a = true,  b = sel[2], out = Xc3);
+    And(a = Xc1,   b = Xc2,    out = Xc4);
+    And(a = Xc4,   b = Xc3,    out = A3);
+    And(a = A3,    b = in,     out = c);
+    //d
+    Xor(a = false, b = sel[0], out = Xd1);
+    Xor(a = false, b = sel[1], out = Xd2);
+    Xor(a = true,  b = sel[2], out = Xd3);
+    And(a = Xd1,   b = Xd2,    out = Xd4);
+    And(a = Xd4,   b = Xd3,    out = A4);
+    And(a = A4,    b = in,     out = d);
+    //e
+    Xor(a = true,  b = sel[0], out = Xe1);
+    Xor(a = true,  b = sel[1], out = Xe2);
+    Xor(a = false, b = sel[2], out = Xe3);
+    And(a = Xe1,   b = Xe2,    out = Xe4);
+    And(a = Xe4,   b = Xe3,    out = A5);
+    And(a = A5,    b = in,     out = e);
+    //f
+    Xor(a = false, b = sel[0], out = Xf1);
+    Xor(a = true,  b = sel[1], out = Xf2);
+    Xor(a = false, b = sel[2], out = Xf3);
+    And(a = Xf1,   b = Xf2,    out = Xf4);
+    And(a = Xf3,   b = Xf4,    out = A6);
+    And(a = A6,    b = in,     out = f);
+    //g
+    Xor(a = true,  b = sel[0], out = Xg1);
+    Xor(a = false, b = sel[1], out = Xg2);
+    Xor(a = false, b = sel[2], out = Xg3);
+    And(a = Xg1,   b = Xg2,    out = Xg4);
+    And(a = Xg4,   b = Xg3,    out = A7);
+    And(a = A7,    b = in,     out = g);
+    //h
+    Xor(a = false, b = sel[0], out = Xh1);
+    Xor(a = false, b = sel[1], out = Xh2);
+    Xor(a = false, b = sel[2], out = Xh3);
+    And(a = Xh1,   b = Xh2,    out = Xh4);
+    And(a = Xh3,   b = Xh4,    out = A8);
+    And(a = A8,    b = in,     out = h);
 }
