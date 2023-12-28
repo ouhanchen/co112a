@@ -6,3 +6,4 @@
  CPU | 複製於 https://github.com/jayying007/nand2tetris 並參考 Chatgpt ，理解30%
  Memory | 參考 https://github.com/jayying007/nand2tetris 與 Chatgpt，修改並完全理解
  Computer | 參考 https://github.com/jayying007/nand2tetris 與 Chatgpt，並理解50%
+ 期中 | 利用 Chatgpt 撰寫內容，我完成排版
