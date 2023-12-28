@@ -27,23 +27,27 @@ CHIP Memory {
     OUT out[16];
 
     PARTS:
-    //判断本次输入给谁，memoryFlag,screenFlag,KeyboardFlag只有一个为1
+    // 判斷本次輸入給誰，memoryFlag, screenFlag, keyboardFlag 只有一個為1
     DMux(in=true, sel=address[14], a=memoryFlag, b=io);
     DMux(in=io, sel=address[13], a=screenFlag, b=keyboardFlag);
-    //访问的是内存
+
+    // 訪問的是內存
     Mux16(a=false, b=in, sel=memoryFlag, out=o1);
     And(a=memoryFlag, b=load, out=loadToMemory);
     RAM16K(in=o1, load=loadToMemory, address=address[0..13], out=out1);
-    Mux16(a=false, b=out1, sel=memoryFlag, out=output1); //如果不是访问内存，将out1清空
-    //访问的是屏幕
+    Mux16(a=false, b=out1, sel=memoryFlag, out=output1); // 如果不是訪問內存，將 out1 清空
+
+    // 訪問的是屏幕
     Mux16(a=false, b=in, sel=screenFlag, out=o2);
     And(a=screenFlag, b=load, out=loadToScreen);
     Screen(in=o2, load=loadToScreen, address=address[0..12], out=out2);
-    Mux16(a=false, b=out2, sel=screenFlag, out=output2); //如果不是访问屏幕，将out2清空
-    //从键盘输入
-    Keyboard(out=out3);
-    Mux16(a=false, b=out3, sel=keyboardFlag, out=output3); //如果不是访问键盘，将out3清空
+    Mux16(a=false, b=out2, sel=screenFlag, out=output2); // 如果不是訪問屏幕，將 out2 清空
 
+    // 從鍵盤輸入
+    Keyboard(out=out3);
+    Mux16(a=false, b=out3, sel=keyboardFlag, out=output3); // 如果不是訪問鍵盤，將 out3 清空
+
+    // 將三者相加得到最終的輸出
     Or16(a=output1, b=output2, out=ans1);
     Or16(a=ans1, b=output3, out=out);
 }
